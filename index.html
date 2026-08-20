@@ -14,9 +14,9 @@
     </script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Embedded Styles to prevent 404 errors -->
+    <!-- Modern Widget-Style CSS -->
     <style>
         * {
             margin: 0;
@@ -26,22 +26,23 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0f1115;
-            color: #e1e1e6;
-            line-height: 1.6;
+            background-color: #0b0d10;
+            color: #d1d5db;
+            line-height: 1.5;
         }
 
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1150px;
             margin: 0 auto;
         }
 
-        /* Header */
+        /* Header Widget */
         .site-header {
-            padding: 20px 0;
-            border-bottom: 1px solid #20232a;
-            background-color: rgba(15, 17, 21, 0.9);
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background-color: rgba(11, 13, 16, 0.85);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -54,9 +55,11 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: #ffffff;
+            letter-spacing: -0.01em;
+            text-decoration: none;
         }
 
         .logo span {
@@ -66,67 +69,82 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 24px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #a1a1aa;
+            color: #9ca3af;
+            font-size: 0.95rem;
             font-weight: 500;
-            transition: color 0.2s;
+            transition: color 0.15s ease;
         }
 
         .nav-links a:hover {
             color: #ffffff;
         }
 
-        /* Hero Section */
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 7px 16px;
+            border-radius: 6px;
+            color: #ffffff !important;
+            transition: border-color 0.15s ease, background-color 0.15s ease;
+        }
+
+        .btn-outline:hover {
+            border-color: #6366f1;
+            background-color: rgba(99, 102, 241, 0.05);
+        }
+
+        /* Hero Section Widget */
         .hero {
-            padding: 100px 0 80px;
+            padding: 80px 0 60px;
             text-align: center;
-            background: radial-gradient(circle at center, #1e1b4b 0%, #0f1115 70%);
         }
 
         .badge {
-            display: inline-block;
-            background-color: rgba(99, 102, 241, 0.1);
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(99, 102, 241, 0.08);
             color: #818cf8;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             margin-bottom: 20px;
-            border: 1px solid rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.15);
         }
 
         .hero-content h2 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 20px;
-            max-width: 800px;
+            margin-bottom: 16px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
             letter-spacing: -0.02em;
         }
 
         .hero-content p {
-            font-size: 1.15rem;
-            color: #94a3b8;
-            max-width: 600px;
-            margin: 0 auto 35px;
+            font-size: 1.05rem;
+            color: #9ca3af;
+            max-width: 560px;
+            margin: 0 auto 30px;
         }
 
         /* Buttons */
         .btn-primary {
             background-color: #6366f1;
             color: #ffffff;
-            padding: 12px 28px;
-            border-radius: 8px;
+            padding: 10px 22px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
             display: inline-block;
-            transition: background-color 0.2s, transform 0.1s;
+            transition: background-color 0.15s ease;
         }
 
         .btn-primary:hover {
@@ -134,24 +152,21 @@
         }
 
         .btn-secondary {
-            background-color: #27272a;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             color: #ffffff;
-            padding: 12px 28px;
-            border-radius: 8px;
+            padding: 10px 22px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
             display: inline-block;
-            transition: background-color 0.2s;
+            transition: background-color 0.15s ease, border-color 0.15s ease;
         }
 
         .btn-secondary:hover {
-            background-color: #3f3f46;
-        }
-
-        .btn-outline {
-            border: 1px solid #3f3f46;
-            padding: 8px 18px;
-            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.09);
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
         .full-width {
@@ -162,103 +177,109 @@
 
         /* Events Section */
         .events-section {
-            padding: 80px 0;
+            padding: 50px 0 80px;
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 35px;
         }
 
         .section-title h2 {
-            font-size: 2.25rem;
+            font-size: 1.75rem;
             color: #ffffff;
-            margin-bottom: 10px;
+            font-weight: 600;
+            margin-bottom: 6px;
         }
 
         .section-title p {
-            color: #94a3b8;
+            color: #9ca3af;
+            font-size: 0.95rem;
         }
 
         .events-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
         }
 
+        /* Event Card Widget */
         .event-card {
-            background-color: #18181b;
-            border: 1px solid #27272a;
-            border-radius: 12px;
-            padding: 30px;
+            background-color: #12151a;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 24px;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: border-color 0.2s, transform 0.2s;
+            transition: border-color 0.15s ease, transform 0.15s ease;
         }
 
         .event-card:hover {
-            border-color: #3f3f46;
-            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
         }
 
         .event-card.featured {
-            border-color: #6366f1;
-            background: linear-gradient(180deg, #18181b 0%, #1e1b4b 100%);
+            border-color: rgba(99, 102, 241, 0.4);
+            background: linear-gradient(180deg, #12151a 0%, #131324 100%);
         }
 
         .event-tag {
             position: absolute;
             top: 20px;
             right: 20px;
-            background-color: #6366f1;
-            color: #ffffff;
-            font-size: 0.75rem;
+            background-color: rgba(99, 102, 241, 0.12);
+            color: #818cf8;
+            font-size: 0.7rem;
             font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 6px;
+            padding: 3px 8px;
+            border-radius: 4px;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .event-date {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #818cf8;
             font-weight: 600;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
         .event-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             color: #ffffff;
-            margin-bottom: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
         .event-card p {
-            color: #a1a1aa;
-            font-size: 0.95rem;
+            color: #9ca3af;
+            font-size: 0.9rem;
             margin-bottom: 20px;
         }
 
         .event-meta {
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            font-size: 0.85rem;
-            color: #71717a;
-            margin-bottom: 25px;
-            border-top: 1px solid #27272a;
-            padding-top: 15px;
+            gap: 4px;
+            font-size: 0.825rem;
+            color: #6b7280;
+            margin-bottom: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 12px;
         }
 
         /* Footer */
         .site-footer {
-            padding: 30px 0;
-            border-top: 1px solid #20232a;
+            padding: 24px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             text-align: center;
-            color: #71717a;
-            font-size: 0.9rem;
+            color: #6b7280;
+            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -267,9 +288,9 @@
     <!-- Header / Navigation -->
     <header class="site-header">
         <div class="container">
-            <h1 class="logo">Jershon <span>Vinodh</span></h1>
+            <a href="index.html" class="logo">Jershon <span>Vinodh</span></a>
             <nav class="nav-links">
-                <a href="#events">Upcoming Events</a>
+                <a href="#events">Seminars</a>
                 <a href="/about">About</a>
                 <a href="/contact" class="btn-outline">Get in Touch</a>
             </nav>
@@ -279,10 +300,10 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
-            <span class="badge">Transform Your Mindset</span>
+            <span class="badge">Live Seminars & Keynotes</span>
             <h2>Ignite Your Drive, Master Your Future.</h2>
-            <p>Join live, high-impact seminars designed to break mental barriers, accelerate your growth, and unlock your true potential.</p>
-            <a href="#events" class="btn-primary">Secure Your Seat</a>
+            <p>Join high-impact interactive sessions designed to break mental barriers, accelerate your growth, and unlock your true potential.</p>
+            <a href="#events" class="btn-primary">View Upcoming Events</a>
         </div>
     </section>
 
@@ -291,7 +312,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Upcoming Seminars</h2>
-                <p>Reserve your spot for the next life-changing experience.</p>
+                <p>Reserve your spot for the next session.</p>
             </div>
 
             <div class="events-grid">
