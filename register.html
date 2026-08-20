@@ -168,6 +168,10 @@
             box-shadow: 0 0 10px rgba(129, 140, 248, 0.2);
         }
 
+        select.form-control {
+            cursor: pointer;
+        }
+
         /* Checkbox styling for confirmation */
         .checkbox-group {
             display: flex;
@@ -261,6 +265,14 @@
             <div class="register-card">
                 <form action="https://formspree.io/f/xnpallvj" method="POST">
                     
+                    <!-- Select Seminar Dropdown -->
+                    <div class="form-group">
+                        <label for="seminar">Select Seminar / Event</label>
+                        <select id="seminar" name="Selected Seminar" class="form-control" required>
+                            <option value="" disabled selected>Loading available seminars...</option>
+                        </select>
+                    </div>
+
                     <!-- Full Name Field -->
                     <div class="form-group">
                         <label for="fullname">Full Name</label>
@@ -301,5 +313,49 @@
         </div>
     </footer>
 
+    <!-- Script to dynamically load seminar titles from the homepage events section -->
+    <script>
+        async function loadSeminars() {
+            const selectElement = document.getElementById('seminar');
+            try {
+                // Fetch the homepage HTML
+                const response = await fetch('/motivationalspeaking/');
+                const htmlText = await response.text();
+                
+                // Parse it into a document object
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlText, 'text/html');
+                
+                // Look for seminar card titles inside the #events section (adjust selectors to match your site cards if needed)
+                // Looking for common heading tags inside event cards
+                const eventCards = doc.querySelectorAll('#events h3, .event-card h3, .seminar-card h3');
+                
+                selectElement.innerHTML = '<option value="" disabled selected>Choose a seminar...</option>';
+                
+                if (eventCards.length > 0) {
+                    eventCards.forEach(card => {
+                        const seminarTitle = card.textContent.trim();
+                        const option = document.createElement('option');
+                        option.value = seminarTitle;
+                        option.textContent = seminarTitle;
+                        selectElement.appendChild(option);
+                    });
+                } else {
+                    // Fallback option if specific headers aren't detected automatically
+                    throw new Error('No events found via scraper');
+                }
+            } catch (error) {
+                // Fallback static list if fetch fails (e.g. running locally without a live server preview)
+                selectElement.innerHTML = `
+                    <option value="" disabled selected>Choose a seminar...</option>
+                    <option value="Unstoppable Mindset Keynote">Unstoppable Mindset Keynote</option>
+                    <option value="Student Leadership Masterclass">Student Leadership Masterclass</option>
+                    <option value="The Power of Resilience Workshop">The Power of Resilience Workshop</option>
+                `;
+            }
+        }
+
+        loadSeminars();
+    </script>
 </body>
 </html>
