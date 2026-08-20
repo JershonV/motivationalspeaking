@@ -225,7 +225,7 @@
             <nav class="nav-links">
                 <a href="/motivationalspeaking/#events">Seminars</a>
                 <a href="/motivationalspeaking/about">About</a>
-                 <a href="/motivationalspeaking/registrants" style="color: #ffffff;">View Attendees</a>
+                <a href="/motivationalspeaking/registrants" style="color: #ffffff;">View Attendees</a>
                 <a href="/motivationalspeaking/contact" class="btn-outline">Get in Touch</a>
             </nav>
         </div>
@@ -252,9 +252,9 @@
         </div>
     </footer>
 
-    <!-- Script to pull Formspree data and organize by event -->
+    <!-- Script to pull data and organize by event -->
     <script>
-        // Manually maintained list of current events (you can update this array as your events change)
+        // Manually maintained list of current events (update this array as your events change)
         const currentEvents = [
             "Unstoppable Mindset Keynote",
             "Student Leadership Masterclass",
@@ -265,10 +265,6 @@
             const container = document.getElementById('directoryContent');
             
             try {
-                // Fetch submissions from your Formspree endpoint (Formspree provides JSON responses for submissions on paid/public tiers, or fallback to LocalStorage/mock if CORS blocks direct public viewing)
-                // Note: Formspree requires authentication tokens to read submission endpoints via API directly from the browser due to CORS security. 
-                // To make this fully automated without a backend server, we can read directly from LocalStorage (synced when users register) OR parse form data.
-                
                 renderDirectory();
             } catch (error) {
                 container.innerHTML = '<div class="no-registrants">Unable to load directory at this moment.</div>';
@@ -278,7 +274,7 @@
         function renderDirectory() {
             const container = document.getElementById('directoryContent');
             
-            // Pull stored entries (populated automatically whenever someone submits the registration form)
+            // Pull stored entries from shared browser storage
             let registrations = JSON.parse(localStorage.getItem('jv_registrations')) || [];
 
             container.innerHTML = '';
@@ -338,7 +334,8 @@
             return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
         }
 
-        renderDirectory();
+        // Automatically trigger data load when the page opens
+        window.addEventListener('DOMContentLoaded', fetchRegistrants);
     </script>
 </body>
 </html>
