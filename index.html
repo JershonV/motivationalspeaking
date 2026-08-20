@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jershon Vinodh's Motivational Seminars</title>
+    <title>Jershon Vinodh | Motivational Keynotes & Seminars</title>
     
     <!-- Clean .html from the URL bar automatically on load -->
     <script>
@@ -14,9 +14,9 @@
     </script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Modern Widget-Style CSS -->
+    <!-- Embedded Styles -->
     <style>
         * {
             margin: 0;
@@ -26,26 +26,26 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0b0d10;
-            color: #d1d5db;
-            line-height: 1.5;
+            background-color: #0b0d12;
+            color: #e1e1e6;
+            line-height: 1.6;
         }
 
         .container {
             width: 90%;
-            max-width: 1150px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Header Widget */
+        /* Header */
         .site-header {
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            background-color: rgba(11, 13, 16, 0.85);
-            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background-color: rgba(11, 13, 18, 0.9);
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(10px);
         }
 
         .site-header .container {
@@ -55,29 +55,28 @@
         }
 
         .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 800;
             color: #ffffff;
-            letter-spacing: -0.01em;
             text-decoration: none;
+            letter-spacing: -0.02em;
         }
 
         .logo span {
-            color: #6366f1;
+            color: #818cf8;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 30px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #9ca3af;
-            font-size: 0.95rem;
+            color: #94a3b8;
             font-weight: 500;
-            transition: color 0.15s ease;
+            transition: color 0.2s;
         }
 
         .nav-links a:hover {
@@ -85,88 +84,110 @@
         }
 
         .btn-outline {
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 7px 16px;
+            border: 1px solid rgba(129, 140, 248, 0.4);
+            padding: 8px 18px;
             border-radius: 6px;
             color: #ffffff !important;
-            transition: border-color 0.15s ease, background-color 0.15s ease;
+            transition: all 0.2s;
         }
 
         .btn-outline:hover {
-            border-color: #6366f1;
-            background-color: rgba(99, 102, 241, 0.05);
+            background-color: rgba(129, 140, 248, 0.1);
+            border-color: #818cf8;
         }
 
-        /* Hero Section Widget */
+        /* Hero Section with Immersive Glow */
         .hero {
-            padding: 80px 0 60px;
+            padding: 130px 0 100px;
             text-align: center;
+            background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.18) 0%, rgba(15, 17, 23, 0) 70%), #0b0d12;
+            position: relative;
+            overflow: hidden;
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
-            background-color: rgba(99, 102, 241, 0.08);
-            color: #818cf8;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15));
+            color: #a5b4fc;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 20px;
-            border: 1px solid rgba(99, 102, 241, 0.15);
+            margin-bottom: 25px;
+            border: 1px solid rgba(129, 140, 248, 0.3);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
         }
 
         .hero-content h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            font-weight: 800;
             color: #ffffff;
-            margin-bottom: 16px;
-            max-width: 700px;
+            margin-bottom: 20px;
+            max-width: 850px;
             margin-left: auto;
             margin-right: auto;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+        }
+
+        .hero-content h2 span {
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-content p {
-            font-size: 1.05rem;
-            color: #9ca3af;
-            max-width: 560px;
-            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 620px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         /* Buttons */
         .btn-primary {
-            background-color: #6366f1;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             color: #ffffff;
-            padding: 10px 22px;
-            border-radius: 6px;
+            padding: 14px 32px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
             display: inline-block;
-            transition: background-color 0.15s ease;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
         }
 
         .btn-primary:hover {
-            background-color: #4f46e5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(99, 102, 241, 0.6);
         }
 
         .btn-secondary {
             background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: #ffffff;
-            padding: 10px 22px;
-            border-radius: 6px;
+            padding: 14px 32px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
             display: inline-block;
-            transition: background-color 0.15s ease, border-color 0.15s ease;
+            transition: background-color 0.2s, border-color 0.2s;
         }
 
         .btn-secondary:hover {
             background-color: rgba(255, 255, 255, 0.09);
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .full-width {
@@ -175,111 +196,161 @@
             width: 100%;
         }
 
+        /* Social Proof / Stats Strip */
+        .stats-strip {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            background-color: rgba(15, 17, 23, 0.6);
+            padding: 30px 0;
+            margin-bottom: 60px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+            gap: 20px;
+        }
+
+        .stat-item h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .stat-item h4 span {
+            color: #818cf8;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
         /* Events Section */
         .events-section {
-            padding: 50px 0 80px;
+            padding: 40px 0 100px;
         }
 
         .section-title {
-            margin-bottom: 35px;
+            text-align: center;
+            margin-bottom: 50px;
         }
 
         .section-title h2 {
-            font-size: 1.75rem;
+            font-size: 2.5rem;
             color: #ffffff;
-            font-weight: 600;
-            margin-bottom: 6px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
         }
 
         .section-title p {
-            color: #9ca3af;
-            font-size: 0.95rem;
+            color: #94a3b8;
+            font-size: 1.05rem;
         }
 
         .events-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
         }
 
-        /* Event Card Widget */
+        /* Event Card with Purple Glow Effects */
         .event-card {
-            background-color: #12151a;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 10px;
-            padding: 24px;
+            background-color: #12151d;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 35px;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: border-color 0.15s ease, transform 0.15s ease;
+            transition: all 0.3s ease;
         }
 
         .event-card:hover {
-            border-color: rgba(255, 255, 255, 0.12);
-            transform: translateY(-2px);
+            border-color: rgba(129, 140, 248, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .event-card.featured {
-            border-color: rgba(99, 102, 241, 0.4);
-            background: linear-gradient(180deg, #12151a 0%, #131324 100%);
+            border-color: #6366f1;
+            background: linear-gradient(180deg, #12151d 0%, #171630 100%);
+            box-shadow: 0 0 35px rgba(99, 102, 241, 0.15);
         }
 
         .event-tag {
             position: absolute;
             top: 20px;
             right: 20px;
-            background-color: rgba(99, 102, 241, 0.12);
-            color: #818cf8;
-            font-size: 0.7rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #ffffff;
+            font-size: 0.75rem;
             font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 4px;
+            padding: 5px 12px;
+            border-radius: 6px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         .event-date {
-            font-size: 0.8rem;
-            color: #818cf8;
+            font-size: 0.85rem;
+            color: #a5b4fc;
             font-weight: 600;
             display: block;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
+            margin-bottom: 12px;
+            letter-spacing: 0.02em;
         }
 
         .event-card h3 {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             color: #ffffff;
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
         }
 
         .event-card p {
-            color: #9ca3af;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
         }
 
         .event-meta {
             display: flex;
             flex-direction: column;
-            gap: 4px;
-            font-size: 0.825rem;
-            color: #6b7280;
-            margin-bottom: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 12px;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #a1a1aa;
+            margin-bottom: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 18px;
         }
 
         /* Footer */
         .site-footer {
-            padding: 24px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             text-align: center;
-            color: #6b7280;
-            font-size: 0.85rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            background-color: #08090d;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h2 {
+                font-size: 2.4rem;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
     </style>
 </head>
@@ -291,8 +362,8 @@
             <a href="index.html" class="logo">Jershon <span>Vinodh</span></a>
             <nav class="nav-links">
                 <a href="#events">Seminars</a>
-                <a href="/about">About</a>
-                <a href="/contact" class="btn-outline">Get in Touch</a>
+                <a href="/motivationalspeaking/about">About</a>
+                <a href="/motivationalspeaking/contact" class="btn-outline">Get in Touch</a>
             </nav>
         </div>
     </header>
@@ -300,19 +371,40 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
-            <span class="badge">Live Seminars & Keynotes</span>
-            <h2>Ignite Your Drive, Master Your Future.</h2>
-            <p>Join high-impact interactive sessions designed to break mental barriers, accelerate your growth, and unlock your true potential.</p>
-            <a href="#events" class="btn-primary">View Upcoming Events</a>
+            <span class="badge">⚡ Transform Your Mindset & Performance</span>
+            <h2>Ignite Your Drive, <span>Master Your Future.</span></h2>
+            <p>Join high-impact interactive keynotes and live seminars designed to break mental barriers, build unshakeable discipline, and unlock your true potential.</p>
+            <div class="hero-cta-group">
+                <a href="#events" class="btn-primary">Explore Seminars</a>
+                <a href="about.html" class="btn-secondary">Meet Jershon</a>
+            </div>
         </div>
     </section>
+
+    <!-- Social Proof Stats Strip -->
+    <div class="stats-strip">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h4><span>100</span>%</h4>
+                <p>Actionable Strategies</p>
+            </div>
+            <div class="stat-item">
+                <h4><span>Live</span></h4>
+                <p>Interactive Keynotes</p>
+            </div>
+            <div class="stat-item">
+                <h4><span>3+</span></h4>
+                <p>Major Cities Tour</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Upcoming Events Section -->
     <section id="events" class="events-section">
         <div class="container">
             <div class="section-title">
                 <h2>Upcoming Seminars</h2>
-                <p>Reserve your spot for the next session.</p>
+                <p>Secure your ticket for the next life-changing experience.</p>
             </div>
 
             <div class="events-grid">
@@ -323,10 +415,10 @@
                     <div class="event-details">
                         <span class="event-date">October 14, 2026 • 6:00 PM EST</span>
                         <h3>The Breakthrough Blueprint</h3>
-                        <p>A 3-hour deep dive into overcoming self-doubt, building relentless discipline, and scaling your personal goals.</p>
+                        <p>A 3-hour deep dive into overcoming self-doubt, building relentless discipline, and scaling your personal goals to the next level.</p>
                         <div class="event-meta">
                             <span>📍 Virtual & Live (Chicago, IL)</span>
-                            <span>⏳ Limited Seats</span>
+                            <span>⏳ Limited Seats Available</span>
                         </div>
                         <a href="signup.html?event=breakthrough-blueprint" class="btn-primary full-width">Claim Your Ticket</a>
                     </div>
@@ -337,7 +429,7 @@
                     <div class="event-details">
                         <span class="event-date">November 03, 2026 • 10:00 AM EST</span>
                         <h3>Leadership Under Pressure</h3>
-                        <p>Master emotional intelligence, high-stakes decision making, and inspire teams through uncertainty.</p>
+                        <p>Master emotional intelligence, high-stakes decision making, and learn how to inspire teams through uncertainty.</p>
                         <div class="event-meta">
                             <span>📍 Austin, TX</span>
                             <span>⏳ Selling Fast</span>
@@ -354,7 +446,7 @@
                         <p>Close out the year strong and build an unshakeable roadmap for your personal and professional success in the new year.</p>
                         <div class="event-meta">
                             <span>📍 Miami, FL</span>
-                            <span>⏳ Open</span>
+                            <span>⏳ Open Registration</span>
                         </div>
                         <a href="signup.html?event=visionary-reset" class="btn-secondary full-width">Register Now</a>
                     </div>
