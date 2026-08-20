@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jershon Vinodh's Motivational Seminars</title>
+    
+    <!-- Clean .html from the URL bar automatically on load -->
+    <script>
+        if (window.location.pathname.endsWith('.html')) {
+            var newPath = window.location.pathname.slice(0, -5);
+            window.history.replaceState(null, null, newPath + window.location.search + window.location.hash);
+        }
+    </script>
+
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts for Modern Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
