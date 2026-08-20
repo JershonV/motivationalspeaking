@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Jershon Vinodh</title>
+    
+    <script>
+        // Check authentication guard
+        if (localStorage.getItem('jv_admin_logged_in') !== 'true') {
+            window.location.href = 'admin-login.html';
+        }
+        if (window.location.pathname.endsWith('.html')) {
+            var newPath = window.location.pathname.slice(0, -5);
+            window.history.replaceState(null, null, newPath + window.location.search + window.location.hash);
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0d12;
+            color: #e1e1e6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        
+        .site-header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background-color: rgba(11, 13, 18, 0.9);
+        }
+        .site-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: #ffffff; text-decoration: none; }
+        .logo span { color: #818cf8; }
+        
+        .logout-btn {
+            background: rgba(248, 113, 113, 0.1);
+            border: 1px solid rgba(248, 113, 113, 0.3);
+            color: #f87171;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .logout-btn:hover { background: rgba(248, 113, 113, 0.2); }
+
+        .main-content { padding: 40px 0; flex: 1; }
+        h1 { font-size: 2rem; margin-bottom: 24px; color: #fff; }
+        
+        .dashboard-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+        @media(max-width: 900px) { .dashboard-grid { grid-template-columns: 1fr; } }
+
+        .panel-card {
+            background-color: #12151d;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        .panel-card h3 { font-size: 1.25rem; color: #fff; margin-bottom: 16px; }
+
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 6px; }
+        .form-control {
+            width: 100%;
+            background-color: #0b0d12;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+        }
+        .form-control:focus { border-color: #818cf8; }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+        }
+        .btn-danger {
+            background: rgba(248, 113, 113, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(248, 113, 113, 0.3);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .btn-danger:hover { background: rgba(248, 113, 113, 0.3); }
+
+        ul.item-list { list-style: none; }
+        ul.item-list li {
+            background: #0b0d12;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.95rem; }
+        th { color: #94a3b8; font-weight: 600; }
+        
+        .badge {
+            background: rgba(129, 140, 248, 0.15);
+            color: #818cf8;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <a href="#" class="logo">Admin <span>Dashboard</span></a>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h1>Event & Registration Control Center</h1>
+
+            <div class="dashboard-grid">
+                <!-- Left Column: Manage Seminars/Events -->
+                <div>
+                    <div class="panel-card">
+                        <h3>Add New Seminar</h3>
+                        <form onsubmit="addEvent(event)">
+                            <div class="form-group">
+                                <label for="eventName">Seminar Title</label>
+                                <input type="text" id="eventName" class="form-control" placeholder="e.g., Elite Leadership Masterclass" required>
+                            </div>
+                            <button type="submit" class="btn-primary">Add Event</button>
+                        </form>
+                    </div>
+
+                    <div class="panel-card">
+                        <h3>Active Seminars</h3>
+                        <ul id="eventList" class="item-list">
+                            <!-- Populated via script -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Column: View Participants & Totals -->
+                <div>
+                    <div class="panel-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3>Registered Participants</h3>
+                            <div class="badge">Total Attendees: <span id="totalCount">0</span></div>
+                        </div>
+
+                        <div style="overflow-x: auto;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>Seminar</th>
+                                        <th>Attendees</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="participantTable">
+                                    <!-- Populated via script -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Default Events & Participants if empty
+        if (!localStorage.getItem('jv_events')) {
+            localStorage.setItem('jv_events', JSON.stringify([
+                "Unstoppable Mindset Keynote",
+                "Student Leadership Masterclass",
+                "The Power of Resilience Workshop"
+            ]));
+        }
+
+        if (!localStorage.getItem('jv_registrations')) {
+            localStorage.setItem('jv_registrations', JSON.stringify([
+                { id: 1, name: "Alex Johnson", phone: "636-555-0192", seminar: "Unstoppable Mindset Keynote", attendees: 2 },
+                { id: 2, name: "Sarah Smith", phone: "314-555-8831", seminar: "Student Leadership Masterclass", attendees: 1 }
+            ]));
+        }
+
+        function logout() {
+            localStorage.removeItem('jv_admin_logged_in');
+            window.location.href = 'admin-login.html';
+        }
+
+        function renderDashboard() {
+            // Render Events
+            const events = JSON.parse(localStorage.getItem('jv_events'));
+            const eventListEl = document.getElementById('eventList');
+            eventListEl.innerHTML = '';
+            events.forEach((ev, index) => {
+                eventListEl.innerHTML += `
+                    <li>
+                        <span>${ev}</span>
+                        <button class="btn-danger" onclick="deleteEvent(${index})">Delete</button>
+                    </li>
+                `;
+            });
+
+            // Render Participants
+            const regs = JSON.parse(localStorage.getItem('jv_registrations'));
+            const tableEl = document.getElementById('participantTable');
+            tableEl.innerHTML = '';
+            
+            let totalPeople = 0;
+            regs.forEach((reg, index) => {
+                totalPeople += parseInt(reg.attendees || 1);
+                tableEl.innerHTML += `
+                    <tr>
+                        <td>${reg.name}</td>
+                        <td>${reg.phone}</td>
+                        <td>${reg.seminar}</td>
+                        <td>${reg.attendees}</td>
+                        <td><button class="btn-danger" onclick="deleteParticipant(${index})">Remove</button></td>
+                    </tr>
+                `;
+            });
+            document.getElementById('totalCount').textContent = totalPeople;
+        }
+
+        function addEvent(e) {
+            e.preventDefault();
+            const name = document.getElementById('eventName').value.trim();
+            if (!name) return;
+            const events = JSON.parse(localStorage.getItem('jv_events'));
+            events.push(name);
+            localStorage.setItem('jv_events', JSON.stringify(events));
+            document.getElementById('eventName').value = '';
+            renderDashboard();
+        }
+
+        function deleteEvent(index) {
+            const events = JSON.parse(localStorage.getItem('jv_events'));
+            events.splice(index, 1);
+            localStorage.setItem('jv_events', JSON.stringify(events));
+            renderDashboard();
+        }
+
+        function deleteParticipant(index) {
+            const regs = JSON.parse(localStorage.getItem('jv_registrations'));
+            regs.splice(index, 1);
+            localStorage.setItem('jv_registrations', JSON.stringify(regs));
+            renderDashboard();
+        }
+
+        renderDashboard();
+    </script>
+</body>
+</html>
