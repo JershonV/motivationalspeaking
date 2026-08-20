@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Jershon Vinodh</title>
+    
+    <!-- Clean .html from the URL bar automatically on load -->
+    <script>
+        if (window.location.pathname.endsWith('.html')) {
+            var newPath = window.location.pathname.slice(0, -5);
+            window.history.replaceState(null, null, newPath + window.location.search + window.location.hash);
+        }
+    </script>
+
+    <!-- Embedded Styles to prevent 404 errors -->
+    <style>
+        /* General Page Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f1115;
+            color: #e1e1e6;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 0;
+        }
+
+        /* Header (copied from homepage for consistency) */
+        .site-header {
+            padding: 20px 0;
+            border-bottom: 1px solid #20232a;
+            background-color: rgba(15, 17, 21, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .site-header .container {
+            padding: 0; /* Reset padding for header container */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #6366f1;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #a1a1aa;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* About Page Layout */
+        .about-main {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #27272a;
+        }
+
+        .about-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .about-content h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #a1a1aa;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(99, 102, 241, 0.1);
+            color: #818cf8;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        /* Footer (copied from homepage) */
+        .site-footer {
+            padding: 30px 0;
+            border-top: 1px solid #20232a;
+            text-align: center;
+            color: #71717a;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .about-main {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="logo">Jershon <span>Vinodh</span></a>
+            <nav class="nav-links">
+                <a href="index.html#events">Upcoming Events</a>
+                <a href="about.html">About</a>
+                <a href="index.html#contact" class="btn-outline">Get in Touch</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container about-main">
+        <div class="about-image-wrapper">
+            <!-- This uses your original photo file name -->
+            <img src="image_0.png" alt="Jershon Vinodh motivational speaker portrait">
+        </div>
+
+        <div class="about-content">
+            <span class="badge">My Mission</span>
+            <h1>From Overcoming to Empowering</h1>
+            <p>Welcome! I'm Jershon Vinodh. My journey started not on a stage, but with personal challenges that taught me the value of resilience, discipline, and a focused mindset.</p>
+            <p>I don't just speak about theory; I share actionable strategies forged through experience. My goal is to help you cut through the noise, identify your true potential, and build the mental toughness required to achieve extraordinary results in your life and career.</p>
+            <p>Whether you're an individual looking for a breakthrough or an organization needing to ignite your team's drive, my seminars are designed to deliver real, lasting transformation.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Jershon Vinodh Seminars. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
